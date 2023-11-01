@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // js运行的机制：
+      // 因为js是单线程的，（对于单线程的解释：即同一时间只能做一件事情，做完一件事情之后才能去做另一件事情。
+      // 为什么是单线程：作为浏览器脚本语言，JavaScript主要用途是与用户互动以及操作DOM，所以它只能是单线程，
+      // 否则会带来很严重的同步问题，如果JavaScript有两个线程，一个线程在DOM节点上添加内容，另一个线程删除这个节点，要以哪个线程为指令呢？）
+      // 此时就需要引入异步任务来解决单线程所引发的问题（什么是异步任务：那么js任务也需要一个一个执行，如果一个任务消耗时间很长，
+      // 那么后面的任务也需要等待。如果js不存在异步，只能自上而下执行，如果上一行解析时间很长，下面的代码就会堵塞，
+      // 堵塞就意味着"卡死"，用户体验会极差。程序执行过程中不需要等待其完成就可以继续执行后续任务的任务）
+      // 此时就要提出同步任务与异步任务的概念
+      // 同步任务：同步任务指的是主线程上的任务，只有前一个任务执行完毕，才能执行后一个任务。
+      // 异步任务：不进入主线程，而是进入"任务队列"的任务，只有"任务队列"通知主线程，某个异步任务可以执行了，该任务才会进入主线程执行。
+      // 然而异步任务又分为：宏任务与微任务。宏任务包括整体代码script，setTimeout，setInterval，微任务：Promise，process.nextTick
+      // 事件循环的过程：
+      // 同步任务和异步任务分别进行不同的场所，同步任务进入主线程，异步任务进入事件表（Event Table）并且注册函数。
+      // 当指定的事情完成之后（例如接受到了Promise对象的返回结果resolve/reject），事件表（Event Table）会将这个函数移入到任务队列（Event Queue）。
+      // 主线程内的任务执行完毕之后，回去任务队列（Event Queue）读取对应的函数，移入到主线程执行。
+      // 上述过程不断重复，这就是事件循环（Event Loop）
+      setTimeout(() => {
+        console.log("定时器");
+      });
+
+      new Promise(function (resolve, reject) {
+        console.log("Promise");
+        resolve();
+      }).then(function () {
+        console.log("Promise回调");
+      });
+
+      console.log("结束");
+      // 首先进入整个js文件，是一个宏任务。
+      // 遇到setTimeout宏任务，这是一个异步任务，进入事件表（Event Table）并注册函数，等定时结束之后将函数移入到任务队列（Event Queue）
+      // 遇到 new Promise执行同步代码console.log("Promise")，输出Promise。接收到resolve的返回结果，遇到then回调微任务，
+      // 进入事件表（Event Table）并注册函数，然后将这个函数移入到任务队列（Event Queue）
+      // 遇到console.log("结束")。输出结束
+      // 一轮宏任务处理完毕，判断是否有微任务需要处理。有then回调微任务，输出Promise回调
+      // 一轮事件循环结束，先找到setTimeout宏任务执行，输出定时器，再继续寻找是否有微任务？
+      // 没有，开始下一轮事件循环。是否有宏任务可以进行循环？没有，事件循环结束。
+    </script>
+  </body>
+</html>

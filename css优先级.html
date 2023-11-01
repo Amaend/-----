@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 类选择器 */
+        .box{
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+        }
+        /* id选择器 */
+        #id{
+            background-color: green;
+        }
+        /* 类选择器里面的!important属性 */
+        .box1{
+            background-color: #f3f3f3 !important;
+        }
+        /* 标签选择器 */
+        div{
+            background-color: red;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1" style="background-color: black;" id="id"></div>
+    <!-- css的优先级为!important>行内样式>id选择器>类/伪类/属性选择器>标签选择器>全局选择器 -->
+</body>
+<script>
+    var rob = function(nums) {
+    let result1=0
+    let result2=0
+    nums.forEach((item,index)=>{
+        if(index%2===0){
+            result1=result1+item
+        }else{
+            result2=result2+item
+        }
+    })
+    console.log(result1,result2)
+    return Math.max(result1,result2)
+};
+console.log(rob([1,2,3,4,5,6,7,8,9,10])) 
+</script>
+</html>

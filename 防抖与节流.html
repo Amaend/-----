@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <script>
+      let input = document.querySelector("input");
+      // oninput事件与onchange事件的区别
+      // 监听input的oninput事件该事件，是指当文本框的内容发生变化时触发，若一直改变该内容则一直触发该事件
+      // input.addEventListener('input',(e)=>{
+      //     console.log(e.target.value)
+      // })
+      // 监听input的onchange事件，该事件是指当文本框的内容发生变化且完成时触发，也可以被理解为失去焦点事件，失去焦点时触发该事件
+      // input.addEventListener('change',(e)=>{
+      //     console.log(e.target.value)
+      // })
+
+      // 防抖与节流的区别
+      // 防抖：是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算
+      // 节流：是指连续触发事件但是在 n 秒中只执行一次函数
+
+      // 防抖
+      function debounce(fn, delay) {
+        let timer = null;
+        return function () {
+          if (timer) clearTimeout(timer); //防抖函数会清除定时器
+          timer = setTimeout(() => {
+            console.log(this);
+            fn.apply(this, arguments);
+          }, delay);
+        };
+      }
+      // 节流
+      function throttle(fn, delay) {
+        let timer = null;
+        return function () {
+          if (!timer) {
+            //节流函数不会清楚定时器，而是直接判断该时间内是否存在定时器，若存在则不执行
+            fn.apply(this, arguments);
+            timer = setTimeout(() => {
+              fn.apply(this, arguments);
+              timer = null;
+            }, delay);
+          }
+        };
+      }
+
+      // 监听输入框，绑定事件,利用防抖函数
+      input.addEventListener(
+        "input",
+        debounce((e) => {
+          console.log(e.target.value);
+        }, 1000)
+      );
+      // 监听输入框，绑定事件,利用防抖函数`
+      // input.addEventListener('input',throttle((e)=>{
+      //     console.log(e.target.value)
+      // },1000))
+    </script>
+  </body>
+</html>

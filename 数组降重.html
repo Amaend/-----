@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let result=[]
+        // function fn(arr){ 
+        //     arr.forEach(item=>{
+        //         if(!Array.isArray(item)) return result.includes(item)?result:result.push(item)
+        //         fn(item)
+        //     })
+        //     return result
+        // }
+        // console.log(fn([1,2,[3,4,5],[1,2,3,4],[1,2,3,4,5,6]]))
+        let arr=[1,2,[1,2,3],[1,2,[1,2,3]],[1,2,[1,2,[1,2,3]]]]
+        console.log(arr.flat(2))
+    </script>
+</body>
+</html>

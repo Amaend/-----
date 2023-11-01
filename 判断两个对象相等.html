@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj={
+            name:'张三',
+            age:18,
+        }
+        let obj1={
+            name:'张三',
+            age:18
+        }
+        // 1.判断两个对象是否相等(其中存在着属性值时)，可以通过JSON.stringify()将对象转换为字符串，然后比较两个字符串是否相等 
+        console.log(JSON.stringify(obj)===JSON.stringify(obj1))
+        // 2.判断两个对象是否相等（其中存在属性与方法时），可以通过Object.getOwnPropertyNames()获取对象的所有属性，然后比较两个数组是否相等
+        // 然后可以通过Object.hasOwnProperty()判断属性是否存在于对面对象属性数组中
+    </script>
+</body>
+</html>

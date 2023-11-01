@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+</body>
+<script>
+    // 1.对于typeof判断null和空对象，返回的都是object，所以需要使用instanceof来判断
+    // let a={}
+    // console.log(typeof a) // object
+    // console.log(typeof null ) // object
+    // let a=null
+    // console.log(a instanceof Object) false
+
+    // 2.对于未定义的变量或已定义为赋值的变量使用typeof，返回的都是undefined
+    // let a
+    // console.log(typeof a) // undefined
+    // console.log(typeof age) //undefined
+    
+
+    // 3.对于已定义未赋值的变量进行取反操作，在if判断中可进行操作
+    // let age
+    // if(age){
+    //     console.log(111)
+    // }else{
+    //     console.log(222)
+    // }
+
+    // 4.对于一个变量为null,为了判断是否为null可以使用===来进行判断
+    // let a=null
+    // console.log(a===null) //true
+    // console.log(null==u
+    console.log(0.1+0.2)
+    console.log(Infinity)
+
+    let obj={
+            name:'张三'
+        }
+    // 判断变量的类型（typeof，instanceof,Object.prototype.toString.call()）
+    // 注意点 typeof只可以判断基本数据类型（字符串，数字，undefined,null,布尔值），对于引用数据类型（对象，数组），typeof只能判断出是Object
+    console.log(typeof obj) //Object
+    console.log(obj instanceof Object) //true
+    console.log(Object.prototype.toString.call(obj)) //[object Object]
+</script>
+</html>

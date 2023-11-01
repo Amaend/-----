@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 定义一个对象
+let person={
+    age:18,
+    name:'张三',
+    sex:''
+}
+// 定义遍历函数并且进行Object.defineProprety重写
+function forEachObject(obj){
+    Object.keys(obj).forEach((key)=>{
+        let objKey=obj[key];
+        Object.defineProperty(obj,key,{
+            // 设置属性是否能够修改
+            // writable:true,
+            // 设置属性是否可以枚举，即是否允许遍历
+            // enumerable:true,
+            // 设置属性是否可以删除或编辑
+            // configurable:true,
+            get(){
+                console.log(`你访问了${key}`+objKey)
+                return objKey;
+            },
+            set(newvalue){
+                console.log(`你修改了${key}`+newvalue)
+                objKey=newvalue;
+            }
+        })
+    })
+}
+forEachObject(person);
+</script>
+</html>

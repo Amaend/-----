@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 模拟实现call函数
+      //   Function.prototype.myCall = function (obj, ...args) {
+      //     // 首先判断传进来的是否是一个对象
+      //     obj = obj ? Object(obj) : window;
+      //     // 定义唯一属性值
+      //     const fn = Symbol("test");
+      //     // 保存this指向
+      //     console.log(this);
+      //     obj[fn] = this;
+      //     // 调用函数
+      //     const res = obj[fn](...args);
+      //     // 删除属性
+      //     delete obj[fn];
+      //     return res;
+      //   };
+      //手写实现apply
+      Function.prototype.myApply = function (obj, args = []) {
+        // 首先判断传进来的是否是一个对象;
+        obj = obj ? Object(obj) : window;
+        // 定义唯一属性值
+        const fn = Symbol("test");
+        // 保存this指向
+        console.log(this);
+        obj[fn] = this;
+        // 调用函数
+        const res = obj[fn](...args);
+        // 删除属性
+        delete obj[fn];
+        return res;
+      };
+      function add(a, b) {
+        console.log(this, a, b, a + b);
+      }
+      let obj = {
+        name: "张三",
+        age: 18,
+      };
+
+      add.myApply(obj, [2, 3]);
+    </script>
+  </body>
+</html>

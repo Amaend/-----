@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>发送请求</button>
+    <script>
+      // 对ajax 请求的封装
+      function request(method, url, data) {
+        return new Promise((reslove, reject) => {
+          let xhr = new XMLHttpRequest(); //创建ajax对象
+          xhr.open(method, url); //设置请求方式，请求地址
+          xhr.send(data); //发送请求
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+              if (xhr.status == 200) {
+                reslove(JSON.parse(xhr.responseText)); //返回数据
+              } else {
+                reject(xhr.statusText); //返回错误信息
+              }
+            }
+          };
+        });
+      }
+      let btn = document.querySelector("button");
+      btn.addEventListener("click", async () => {
+        const res = await request(
+          "GET",
+          "http://geek.itheima.net/v1_0/channels"
+        );
+        if (res.message == "OK") {
+          console.log(res.data.channels);
+        }
+        // request('GET','http://geek.itheima.net/v1_0/channels').then((res)=>{
+        //     console.log(res)
+        // })
+      });
+    </script>
+  </body>
+</html>

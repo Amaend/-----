@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a={
+            name:'张三',
+            age:18,
+            job:{
+                name:'前端工程师',
+                salary:10000
+            }
+        }
+        // 实现深拷贝
+        function deepClone(obj, newObj) {
+            var newObj = newObj || {};
+            for (let key in obj) {
+                if (typeof obj[key] == 'object') {
+                    newObj[key] = (obj[key].constructor === Array) ? [] : {}
+                    deepClone(obj[key], newObj[key]);
+                } else {
+                    newObj[key] = obj[key]
+                }
+            }
+            return newObj;
+        }
+        let b = fn(a)
+        b.name='李四'
+        b.age
+        b.job.name='后端工程师'
+        console.log(a,b)
+    </script>
+</body>
+</html>

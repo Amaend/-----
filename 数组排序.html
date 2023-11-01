@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var findMedianSortedArrays = function(nums1, nums2) {
+    let midIndex
+    let addArr= nums1.concat(nums2).sort((a,b)=>a-b)
+    if(addArr.length % 2 == 0){
+        midIndex=addArr.length/2
+        return (addArr[midIndex]+addArr[midIndex-1])/2
+    }else{
+        midIndex=Math.floor(addArr.length/2) 
+        return addArr[midIndex]
+    }
+};
+const reslut = findMedianSortedArrays([1,2],[3,4])
+console.log(reslut)
+    </script>
+</body>
+</html>

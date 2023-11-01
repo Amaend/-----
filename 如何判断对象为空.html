@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj=[]
+        // 对于一个空对象，进行判空处理你可以
+        // 1.Object.getOwnPropertyNames(obj),该方法可以获取到对象的所有属性名,
+        //  该方法返回一个数组，成员是参数对象自身的全部属性的属性名，不管该属性是否可遍历。
+        console.log(Object.getOwnPropertyNames(obj).length)
+        // 2.Object.keys(obj),该方法可以获取到对象的所有属性名,只返回对象自身的可遍历属性的全部属性名。
+        console.log(Object.keys(obj))
+        // 3.for...in,该方法可以获取到对象的所有属性名
+        for(let key in obj){
+            console.log(key)
+        }
+    </script>
+</body>
+</html>
