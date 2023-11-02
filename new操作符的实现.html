@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function newFun(Fun, ...args) {
+        // 1.创建一个新的对象
+        let newObj = {};
+        // 2.将原型指向原型对象
+        newObj.__proto__ = Fun.prototype;
+        // 3.将this指向新的对象
+        const reslut = Fun.apply(newObj, args);
+        // 4.返回新的对象
+        return reslut instanceof newObj === Object ? reslut : newObj;
+      }
+    </script>
+  </body>
+</html>
