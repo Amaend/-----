@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        class Father{
-            constructor(name,age){
-                this.name = name;
-                this.age = age;
-            }
-            say(){
-                console.log(`${this.name}的年龄是${this.age}`)
-            }
+      class Father {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
         }
-        // let father =new Father('张三',18); //创建Father类的实例话
-        // father.say(); //调用Father类的实例方法
-        //继承
-        // class Son extends Father{} //通过extends关键字实现继承
-        // let son= new Son('李四',19); //{name:'李四',age:19,say:function(){console.log(`${this.name}的年龄是${this.age}`)}}
-        // son.say(); //调用Son类的实例方法
-        // 1.super关键字(在子类的构造函数中，访问父类的构造函数)
-        // class Son extends Father{
-        //     constructor(name,age,sex){
-        //         super(name,age); //调用父类的构造方法
-        //         this.sex = '男';
-        //     }
-        // }
-        // let son = new Son('王五',20,'女');
-        // console.log(son);
-        // 2.super关键字(在子类的实例方法，访问父类的实例方法)
-        class Son extends Father{
-            constructor(name,age,sex){
-                super(name,age); //调用父类的构造方法
-                this.sex = sex;
-            }
-            sonSay(){
-                console.log(`${this.name}的年龄是${this.age}性别是${this.sex}`)
-                super.say(); //调用父类的实例方法
-            }
+        say() {
+          console.log(`${this.name}的年龄是${this.age}`);
         }
-        let son = new Son('王五',20,'女');
-        son.sonSay(); //调用子类的实例方法
-        console.log(son);
+      }
+      // let father =new Father('张三',18); //创建Father类的实例
+      // father.say(); //调用Father类的实例方法
+      //继承
+      // class Son extends Father{} //通过extends关键字实现继承
+      // let son= new Son('李四',19); //{name:'李四',age:19,say:function(){console.log(`${this.name}的年龄是${this.age}`)}}
+      // son.say(); //调用Son类的实例方法
+      // 1.super关键字(在子类的构造函数中，访问父类的构造函数)
+      // class Son extends Father{
+      //     constructor(name,age,sex){
+      //         super(name,age); //调用父类的构造方法
+      //         this.sex = '男';
+      //     }
+      // }
+      // let son = new Son('王五',20,'女');
+      // console.log(son);
+      // 2.super关键字(在子类的实例方法，访问父类的实例方法)
+      class Son extends Father {
+        constructor(name, age, sex) {
+          super(name, age); //调用父类的构造方法
+          this.sex = sex;
+        }
+        sonSay() {
+          console.log(`${this.name}的年龄是${this.age}性别是${this.sex}`);
+          super.say(); //调用父类的实例方法
+        }
+      }
+      let son = new Son("王五", 20, "女");
+      son.sonSay(); //调用子类的实例方法
+      console.log(son);
     </script>
-</body>
+  </body>
 </html>
