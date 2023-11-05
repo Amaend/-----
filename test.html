@@ -8,28 +8,20 @@
   </head>
   <body>
     <script>
-      // Es6的继承与ES5的继承的区别
-      // Es6d的继承
-      // class father {
-      //   constructor(name) {
-      //     this.name = name;
-      //   }
-      //   say() {
-      //     console.log(this.name);
-      //   }
-      // }
-      // class son extends father {
-      //   constructor(name, age) {
-      //     super(name);
-      //     this.age = age;
-      //   }
-      //   say() {
-      //     console.log(this.age);
-      //   }
-      // }
-      // let son1 = new son("张三", 18);
-      // son1.say();
-      // ES5的继承
+      let promise = new Promise((resolve, reject) => {
+        //做一些异步操作
+        setTimeout(() => {
+          console.log("执行完成");
+          resolve("我是成功！！");
+        }, 2000);
+      });
+      promise
+        .then((data) => {
+          console.log(data);
+        })
+        .then((data) => {
+          console.log(data);
+        });
     </script>
   </body>
 </html>
