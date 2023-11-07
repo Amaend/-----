@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let str = "abba";
+      //   借用辅助函数实现
+      //   function fun(s) {
+      //     let str = s.split("").reverse().join("");
+      //     // console.log(s.split("").reverse().join(""));
+      //     return str == s;
+      //   }
+      //   console.log(fun(str));
+      //   通过for循环实现
+      function fun(s) {
+        let str = "";
+        for (let i = s.length - 1; i >= 0; i--) {
+          str += s[i];
+        }
+        return str == s;
+      }
+      console.log(fun(str));
+    </script>
+  </body>
+</html>
